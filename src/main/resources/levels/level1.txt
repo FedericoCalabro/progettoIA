@@ -1,0 +1,7 @@
+node(1,blue).
+node(2,blue).
+node(3,yellow).
+edge(1,3).
+edge(3,1).
+edge(3,2).
+edge(2,3).
