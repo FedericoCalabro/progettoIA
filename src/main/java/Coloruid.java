@@ -21,13 +21,12 @@ public class Coloruid {
         handler = new DesktopHandler(new DLV2DesktopService("src/main/resources/dlv2.exe"));
 
         InputProgram facts = new ASPInputProgram();
-        facts.addFilesPath("src/main/resources/levels/level1.txt");
+        facts.addFilesPath("src/main/resources/levels/level2.txt");
         handler.addProgram(facts);
 
         InputProgram encoding = new ASPInputProgram();
         encoding.addFilesPath(encodingResource);
         handler.addProgram(encoding);
-
 
         Output o =  handler.startSync();
         System.out.println(o.getOutput());
