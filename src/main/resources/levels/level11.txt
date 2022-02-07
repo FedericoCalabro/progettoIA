@@ -1,0 +1,8 @@
+maxMoves().
+color(blue).
+color(orange).
+color(red).
+color(green).
+color(yellow).
+node(,).
+edge(,).

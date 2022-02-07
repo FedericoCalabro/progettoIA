@@ -1,0 +1,6 @@
+-Ogni colore è un nodo di un grafo
+-Due colori che si toccano hanno un arco tra i propri nodi
+-Se due nodi adiacenti sono dello stesso colore cambiano colore insieme
+-Aggiungere il numero massimo di step ai fatti
+
+-Dire alla Perri di mettere gli errori in o.getErrors() e non o.getOutput()

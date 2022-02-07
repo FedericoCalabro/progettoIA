@@ -1,4 +1,4 @@
-maxMoves(2).
+maxMoves(3).
 color(blue).
 color(orange).
 color(red).
