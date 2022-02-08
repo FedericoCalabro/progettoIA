@@ -1,9 +1,4 @@
-maxMoves(5).
-color(blue).
-color(orange).
-color(red).
-color(green).
-color(yellow).
+maxRounds(5).
 node(1,red).
 node(2,yellow).
 node(3,orange).

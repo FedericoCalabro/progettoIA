@@ -1,9 +1,4 @@
 maxRounds(5).
-color(blue).
-color(orange).
-color(red).
-color(green).
-color(yellow).
 node(1,orange).
 node(2,yellow).
 node(3,green).

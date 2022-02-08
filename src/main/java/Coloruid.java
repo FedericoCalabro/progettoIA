@@ -2,13 +2,9 @@ import it.unical.mat.embasp.base.Handler;
 import it.unical.mat.embasp.base.InputProgram;
 import it.unical.mat.embasp.base.Output;
 import it.unical.mat.embasp.languages.asp.ASPInputProgram;
-import it.unical.mat.embasp.languages.asp.AnswerSet;
 import it.unical.mat.embasp.languages.asp.AnswerSets;
 import it.unical.mat.embasp.platforms.desktop.DesktopHandler;
 import it.unical.mat.embasp.specializations.dlv2.desktop.DLV2DesktopService;
-
-import java.io.IOException;
-import java.util.List;
 
 public class Coloruid {
 
@@ -21,26 +17,30 @@ public class Coloruid {
         handler = new DesktopHandler(new DLV2DesktopService("src/main/resources/dlv2.exe"));
 
         InputProgram facts = new ASPInputProgram();
-        facts.addFilesPath("src/main/resources/levels/level2.txt");
+        facts.addFilesPath("src/main/resources/levels/level14.txt");
         handler.addProgram(facts);
 
         InputProgram encoding = new ASPInputProgram();
         encoding.addFilesPath(encodingResource);
         handler.addProgram(encoding);
 
+        long start = System.currentTimeMillis();
         Output o =  handler.startSync();
-        System.out.println(o.getOutput());
+        long finish = System.currentTimeMillis();
+        long timeElapsed = finish - start;
+        System.out.println(timeElapsed);
 
         AnswerSets answersets = (AnswerSets) o;
-        for(AnswerSet a:answersets.getAnswersets()){
-            try {
-                for(Object obj:a.getAtoms()){
-                    System.out.println(obj);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-        }
+        System.out.println(answersets.getAnswersets());
+//        for(AnswerSet a:answersets.getAnswersets()){
+//            try {
+//                for(Object obj:a.getAtoms()){
+//                    System.out.println(obj);
+//                }
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//
+//        }
     }
 }

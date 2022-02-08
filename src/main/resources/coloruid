@@ -6,16 +6,28 @@ edge(X,Y) :- edge(Y,X).
 nodeColor(N,C,0) :- node(N,C).
 
 %init rounds
-round(T2) | noRound(T2) :- round(T), maxRounds(MAX), T2=T+1, T2<=MAX.
+%round(T2) | noRound(T2) :- round(T), maxRounds(MAX), T2=T+1, T2<=MAX.
+round(T2) :- round(T), maxRounds(MAX), T2=T+1, T2<=MAX.
+
+coloriDisponibili(C,T) :- nodeColor(_,C,T).
 
 %guess click
-click(N,C,T) | nonClick(N,C,T) :- node(N,_), color(C), round(T).
+click(N,C,T) | nonClick(N,C,T) :- node(N,_), coloriDisponibili(C,_), round(T).
 
 %cannot click a node its same color
 :- click(N,C,Present), nodeColor(N,C,Past), Past=Present-1.
 
 %cannot move more than once per round
 :- round(T), #count{T,N,C : click(N,C,T)}!=1.
+
+:~ click(N,C,T), not elimino(T). [1@1,T]
+
+%deve eliminare un colore ogni round
+elimino(T) :-
+    round(T),
+    #count{C : nodeColor(_,C,T)}=K1,
+    #count{C : nodeColor(_,C,T-1)}=K2,
+    K2!=K1-1.
 
 %direct update
 nodeColor(N,C,T) :- click(N,C,T).
@@ -44,7 +56,7 @@ direct(X,Z,C,T) :- direct(X,Y,C,T), nodeColor(Z,C,T), edge(Y,Z), X!=Z.
 :- #max{T : round(T)}=R, #count{C : nodeColor(N,C,R)} != 1.
 
 %minimize number of rounds
-:~ round(T). [1@1,T]
+%:~ round(T). [1@1,T]
 
 #show click/3.
 % #show nodeColor/3.
