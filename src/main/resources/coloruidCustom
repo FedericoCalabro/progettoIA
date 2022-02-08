@@ -1,0 +1,67 @@
+round(1).
+
+edge(X,Y,T) :- edge(Y,X,T).
+
+:~ round(T). [1@2,T]
+round(T2) | noRound(T2) :- round(T), maxRounds(MAX), T2=T+1, T2<=MAX.
+
+coloriDisponibili(C,T) :- node(_,C,T).
+
+%guess click
+click(N,C,T) | nonClick(N,C,T) :- node(N,_,_), coloriDisponibili(C,_), round(T).
+
+%cannot click a node its same color
+:- click(N,C,Present), node(N,C,Past), Past=Present-1.
+
+directNodes(X,T) :- click(X,C,T).
+directNodes(X,Tpresent) :-
+    click(N,C,Tpresent), %3,red,1
+    node(X,C,Tpast), %2,red,0
+    edge(X,N,Tpast),%3,2,0
+    Tpast=Tpresent-1.
+
+node(N,C,T) :- click(N,C,T).
+node(X,C2,Tpresent) :-
+    click(Clicked,C,Tpresent),% click(4,blue,1).
+    Tpast=Tpresent-1,
+    node(X,C2,Tpast),%node(1,red,0). node(2,blue,0). node(3,red,0). node(4,green,0).
+    Clicked!=X,
+    not directNodes(X,Tpresent).
+
+%aggiunge le edge che sono connesse con uno dei nodi vecchi del direct
+edge(Clicked,Other2,Tpresent) :-
+    click(Clicked,_,Tpresent),
+    Tpresent=Tpast+1,
+    node(Other,_,Tpast),
+    Clicked!=Other2,
+    directNodes(Other,Tpresent),
+    edge(Other,Other2,Tpast),
+    not directNodes(Other2,Tpresent).
+
+%aggiunge il resto degli archi ( che non fanno parte della modifica del grafo)
+edge(X,Y,Tpresent) :-
+    click(_,_,Tpresent),
+    Tpresent=Tpast+1,
+    edge(X,Y,Tpast),
+    edge(Y,X,Tpast),
+    not directNodes(Y,Tpresent),
+    not directNodes(X,Tpresent).
+
+:- #max{T : round(T)}=R, #count{C : node(N,C,R)} != 1.
+
+%cannot move more than once per round
+:- round(T), #count{T,N,C : click(N,C,T)}!=1.
+
+:~ click(N,C,T), not isColoreEliminato(T). [1@1,T]
+
+% deve eliminare un colore ogni round
+isColoreEliminato(Tpresent) :-
+  round(Tpresent),round(Tpast), Tpast=Tpresent-1,
+  #count{C : node(_,C,Tpresent)}=Kpresent,
+  #count{C : node(_,C,Tpast)}=Kpast,
+  Kpresent<Kpast.
+
+% #show node/3.
+% #show directNodes/2.
+% #show edge/3.
+#show click/3.

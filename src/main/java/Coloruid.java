@@ -8,7 +8,7 @@ import it.unical.mat.embasp.specializations.dlv2.desktop.DLV2DesktopService;
 
 public class Coloruid {
 
-    private static String encodingResource="src/main/resources/coloruid";
+    private static String encodingResource="src/main/resources/coloruidStandard";
     private static Handler handler;
 
     public static void main(String[] args) {
@@ -31,7 +31,7 @@ public class Coloruid {
         System.out.println(timeElapsed);
 
         AnswerSets answersets = (AnswerSets) o;
-        System.out.println(answersets.getAnswersets());
+        System.out.println(o.getOutput());
 //        for(AnswerSet a:answersets.getAnswersets()){
 //            try {
 //                for(Object obj:a.getAtoms()){
