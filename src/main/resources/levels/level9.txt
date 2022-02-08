@@ -1,4 +1,4 @@
-maxMoves(5).
+maxRounds(5).
 color(blue).
 color(orange).
 color(red).
