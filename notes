@@ -1,6 +1,20 @@
+#Roba DLV
 -Ogni colore è un nodo di un grafo
 -Due colori che si toccano hanno un arco tra i propri nodi
 -Se due nodi adiacenti sono dello stesso colore cambiano colore insieme
 -Aggiungere il numero massimo di step ai fatti
 
 -Dire alla Perri di mettere gli errori in o.getErrors() e non o.getOutput()
+
+#Roba Grafica
+-Id non statico
+-Duplicare gli Archi e controllare se ci sono duplicati
+-Dividere in package
+-Funzione per la propagazione del colore
+-Pulsante e funzione per caricare un livello
+-Pannello per i log DLV
+-Pulsante e funzione per risolvere il livello
+-Disegnare l'id del nodo sul nodo
+-Aggiungere i colori mancanti e modificare il Pannello dei colori
+-To String ai Nodi e agli Archi
+
