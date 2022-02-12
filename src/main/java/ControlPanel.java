@@ -11,6 +11,8 @@ public class ControlPanel extends JToolBar {
     private Action color = new ColorAction("Color");
     private Action connect = new ConnectAction("Connect");
     private Action delete = new DeleteAction("Delete");
+    private Action solve = new SolveAction("Solve");
+    //private Action load = new LoadLevelAction("Load Level");
     private JButton defaultButton = new JButton(newNode);
     private ColorIcon hueIcon = new ColorIcon(Color.blue);
     private JPopupMenu popup = new JPopupMenu();
@@ -23,6 +25,8 @@ public class ControlPanel extends JToolBar {
         this.add(new JButton(clearAll));
         this.add(new JButton(color));
         this.add(new JLabel(hueIcon));
+        this.add(new JButton(solve));
+//      this.add(new Menu(load);
 
         popup.add(new JMenuItem(newNode));
         popup.add(new JMenuItem(color));

@@ -8,6 +8,9 @@ public class Coloruid2 {
         GraphPanel gp = GraphPanel.getInstance();
         f.add(gp.getControlPanel(), BorderLayout.NORTH);
         f.add(new JScrollPane(gp), BorderLayout.CENTER);
+        f.add(gp.getTextArea(),BorderLayout.EAST);
+        gp.getTextArea().setEditable(false);
+
         f.getRootPane().setDefaultButton(gp.getControlPanel().getDefaultButton());
         f.pack();
         f.setLocationByPlatform(true);

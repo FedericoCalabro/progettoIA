@@ -8,13 +8,16 @@
 
 #Roba Grafica
 -Id non statico
--Duplicare gli Archi e controllare se ci sono duplicati
 -Dividere in package
 -Funzione per la propagazione del colore
 -Pulsante e funzione per caricare un livello
--Pannello per i log DLV
--Pulsante e funzione per risolvere il livello
--Disegnare l'id del nodo sul nodo
--Aggiungere i colori mancanti e modificare il Pannello dei colori
--To String ai Nodi e agli Archi
+-Funzione per risolvere il livello
+-Modificare il Pannello dei colori - ???
 
+#Roba Grafica fatta
+-To String ai Nodi e agli Archi - fatto
+-Duplicare gli Archi e controllare se ci sono duplicati - fatto
+-Disegnare l'id del nodo sul nodo - da sistemare
+-Aggiungere i colori mancanti - fatto
+-Pulsante per risolvere il livello - fatto
+-Pannello per i log DLV - fatto

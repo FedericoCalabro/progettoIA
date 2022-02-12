@@ -11,6 +11,8 @@ class MyChooserPanel extends AbstractColorChooserPanel {
         makeAddButton("Red", Color.red);
         makeAddButton("Green", Color.green);
         makeAddButton("Blue", Color.blue);
+        makeAddButton("Orange", Color.orange);
+        makeAddButton("Yellow", Color.yellow);
     }
 
     @Override

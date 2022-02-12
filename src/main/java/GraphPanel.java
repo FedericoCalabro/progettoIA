@@ -16,6 +16,7 @@ public class GraphPanel extends JComponent {
     private static final int HIGH = 480;
     private static final int RADIUS = 20;
     private ControlPanel control = new ControlPanel();
+    private JTextArea textArea = new JTextArea(0,20);
     private int radius = RADIUS;
     private List<Node> nodes = new ArrayList<Node>();
     private List<Node> selected = new ArrayList<Node>();
@@ -55,6 +56,8 @@ public class GraphPanel extends JComponent {
     public ControlPanel getControlPanel() {
         return control;
     }
+
+    public JTextArea getTextArea(){ return textArea;}
 
     public static GraphPanel getInstance(){
         if(instance == null){

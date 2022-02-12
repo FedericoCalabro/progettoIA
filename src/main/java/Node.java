@@ -1,4 +1,5 @@
 import lombok.Data;
+import lombok.ToString;
 
 import java.awt.*;
 import java.util.List;
@@ -35,9 +36,11 @@ public class Node {
      * Draw this node.
      */
     public void draw(Graphics g) {
+
         g.setColor(this.color);
         g.fillOval(b.x, b.y, b.width, b.height);
-
+        g.setColor(Color.black);
+        g.drawString(String.valueOf(id),b.x + b.width/2,b.y + b.height/2 );
         if (selected) {
             g.setColor(Color.darkGray);
             g.drawRect(b.x, b.y, b.width, b.height);
@@ -132,12 +135,20 @@ public class Node {
 
 
     public static void updateColor(List<Node> list, Color color) {
-        int countSelected = 0;
+        //int countSelected = 0;
+        Color oldColor;
+        Node clickedNode;
         for (Node n : list) {
             if (n.isSelected()) {
+                clickedNode = n;
+                oldColor = n.color;
                 n.color = color;
             }
         }
     }
 
+    @Override
+    public String toString(){
+        return "Node "+this.getId()+": color -> "+this.getColor().toString()+")";
+    }
 }

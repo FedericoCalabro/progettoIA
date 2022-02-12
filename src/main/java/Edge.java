@@ -1,4 +1,5 @@
 import lombok.Data;
+import lombok.ToString;
 
 import java.awt.*;
 
@@ -18,5 +19,10 @@ public class Edge {
         Point p2 = n2.getLocation();
         g.setColor(Color.darkGray);
         g.drawLine(p1.x, p1.y, p2.x, p2.y);
+    }
+
+    @Override
+    public String toString(){
+        return "Edge("+this.getN1().getId()+", "+this.getN2().getId()+")";
     }
 }
