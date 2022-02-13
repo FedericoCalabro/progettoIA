@@ -31,6 +31,7 @@ public class ColorAction extends AbstractAction {
                 if (newColor != null) {
                     Node.updateColor(GraphPanel.getInstance().getNodes(), newColor);
                     GraphPanel.getInstance().getControlPanel().getHueIcon().setColor(newColor);
+                    GraphPanel.getInstance().getControlPanel().repaint();
                     GraphPanel.getInstance().repaint();
 //                    repaint();
                 }

@@ -136,8 +136,8 @@ public class Node {
 
     public static void updateColor(List<Node> list, Color color) {
         //int countSelected = 0;
-        Color oldColor;
-        Node clickedNode;
+        Color oldColor = null;
+        Node clickedNode = null;
         for (Node n : list) {
             if (n.isSelected()) {
                 clickedNode = n;
@@ -148,7 +148,9 @@ public class Node {
         //Serve una funzione che, se esiste un nodo del colore che abbiamo cambiato
         //connesso al nodo cliccato, cambia il colore di quel nodo.
         //Si può fare iterando tra i nodi, escluso quello cliccato, e cercando un path
+        //boolean [] visited = new boolean[GraphPanel.getInstance().getNodes().size()+1]
     }
+
     @Override
     public String toString(){
         return "Node "+this.getId()+": color -> "+this.getColor().toString()+")";
