@@ -23,6 +23,6 @@ public class Edge {
 
     @Override
     public String toString(){
-        return "Edge("+this.getN1().getId()+", "+this.getN2().getId()+")";
+        return "edge("+this.getN1().getId()+","+this.getN2().getId()+",0).";
     }
 }

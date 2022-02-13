@@ -21,9 +21,6 @@ public class ConnectAction extends AbstractAction {
                 }
             }
         }
-//        for(Edge edge : GraphPanel.getInstance().getEdges()){
-//            System.out.println(edge.toString());
-//        }
         GraphPanel.getInstance().repaint();
     }
     private boolean itsNotADuplicate(Node n1, Node n2){//controllo se ci sono archi duplicati

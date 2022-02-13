@@ -12,12 +12,19 @@ public class ControlPanel extends JToolBar {
     private Action connect = new ConnectAction("Connect");
     private Action delete = new DeleteAction("Delete");
     private Action solve = new SolveAction("Solve");
-    //private Action load = new LoadLevelAction("Load Level");
+    private Action load = new LoadLevelAction("Load Level");
     private JButton defaultButton = new JButton(newNode);
     private ColorIcon hueIcon = new ColorIcon(Color.blue);
     private JPopupMenu popup = new JPopupMenu();
 
+    SpinnerNumberModel roundModel = new SpinnerNumberModel(4, 1, 20, 1);
+    JLabel maxRoundsLabel = new JLabel("MAX ROUNDS: ");
+    private JSpinner maxRoundsSpinner = new JSpinner(roundModel);
+
+    JLabel currentMoveLabel = new JLabel("STEP: 0/" + maxRoundsSpinner.getValue());
+
     public ControlPanel() {
+
         this.setLayout(new FlowLayout(FlowLayout.LEFT));
         this.setBackground(Color.lightGray);
 
@@ -26,7 +33,10 @@ public class ControlPanel extends JToolBar {
         this.add(new JButton(color));
         this.add(new JLabel(hueIcon));
         this.add(new JButton(solve));
-//      this.add(new Menu(load);
+        this.add(maxRoundsLabel);
+        this.add(maxRoundsSpinner);
+        this.add(new JButton(load));
+        this.add(currentMoveLabel);
 
         popup.add(new JMenuItem(newNode));
         popup.add(new JMenuItem(color));

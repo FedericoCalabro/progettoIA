@@ -14,9 +14,6 @@ public class Node {
     private boolean selected = false;
     private Rectangle b = new Rectangle();
 
-    /**
-     * Construct a new node.
-     */
     public Node(int id, Point p, Color color) {
         this.id = id;
         this.p = p;
@@ -25,45 +22,30 @@ public class Node {
         setBoundary(b);
     }
 
-    /**
-     * Calculate this node's rectangular boundary.
-     */
     private void setBoundary(Rectangle b) {
         b.setBounds(p.x - r, p.y - r, 2 * r, 2 * r);
     }
 
-    /**
-     * Draw this node.
-     */
     public void draw(Graphics g) {
 
         g.setColor(this.color);
         g.fillOval(b.x, b.y, b.width, b.height);
         g.setColor(Color.black);
-        g.drawString(String.valueOf(id),b.x + b.width/2,b.y + b.height/2 );
+        g.drawString(String.valueOf(id),b.x + (int)(b.width/2.25),b.y + (int)(b.height/1.6) );
         if (selected) {
             g.setColor(Color.darkGray);
             g.drawRect(b.x, b.y, b.width, b.height);
         }
     }
 
-    /**
-     * Return this node's location.
-     */
     public Point getLocation() {
         return p;
     }
 
-    /**
-     * Return true if this node contains p.
-     */
     public boolean contains(Point p) {
         return b.contains(p);
     }
 
-    /**
-     * Return true if this node is selected.
-     */
     public boolean isSelected() {
         return selected;
     }
@@ -100,18 +82,12 @@ public class Node {
         return false;
     }
 
-    /**
-     * Select each node in r.
-     */
     public static void selectRect(java.util.List<Node> list, Rectangle r) {
         for (Node n : list) {
             n.setSelected(r.contains(n.p));
         }
     }
 
-    /**
-     * Toggle selected state of each node containing p.
-     */
     public static void selectToggle(java.util.List<Node> list, Point p) {
         for (Node n : list) {
             if (n.contains(p)) {
@@ -120,9 +96,6 @@ public class Node {
         }
     }
 
-    /**
-     * Update each node's position by d (delta).
-     */
     public static void updatePosition(java.util.List<Node> list, Point d) {
         for (Node n : list) {
             if (n.isSelected()) {
@@ -153,6 +126,8 @@ public class Node {
 
     @Override
     public String toString(){
-        return "Node "+this.getId()+": color -> "+this.getColor().toString()+")";
+        char currentStep = GraphPanel.getInstance().getControlPanel().getCurrentMoveLabel().getText().charAt(6);
+        return "node("+this.getId()+","+Utils.getStringFromColor(color)+","+currentStep+").";
     }
+
 }

@@ -9,7 +9,7 @@ public class MouseMotionHandler extends MouseMotionAdapter {
     @Override
     public void mouseDragged(MouseEvent e) {
         Point mousePt = GraphPanel.getInstance().getMousePt();
-        if (GraphPanel.getInstance().getSelecting()) {
+        if (GraphPanel.getInstance().isSelecting()) {
             GraphPanel.getInstance().getMouseRect().setBounds(
                     Math.min(mousePt.x, e.getX()),
                     Math.min(mousePt.y, e.getY()),

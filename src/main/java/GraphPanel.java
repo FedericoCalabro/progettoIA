@@ -1,27 +1,23 @@
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 
 @Data
 public class GraphPanel extends JComponent {
     public static int id = 0;
     private static GraphPanel instance = null;
-    private static final int WIDE = 640;
-    private static final int HIGH = 480;
-    private static final int RADIUS = 20;
-    private ControlPanel control = new ControlPanel();
+
+    private ControlPanel controlPanel = new ControlPanel();
     private JTextArea textArea = new JTextArea(0,20);
-    private int radius = RADIUS;
+    private int radius = Utils.RADIUS;
     private List<Node> nodes = new ArrayList<Node>();
     private List<Node> selected = new ArrayList<Node>();
     private List<Edge> edges = new ArrayList<Edge>();
-    private Point mousePt = new Point(WIDE / 2, HIGH / 2);
+    private Point mousePt = new Point(Utils.WIDE / 2, Utils.HIGH / 2);
     private Rectangle mouseRect = new Rectangle();
     private boolean selecting = false;
 
@@ -33,7 +29,7 @@ public class GraphPanel extends JComponent {
 
     @Override
     public Dimension getPreferredSize() {
-        return new Dimension(WIDE, HIGH);
+        return new Dimension(Utils.WIDE, Utils.HIGH);
     }
 
     @Override
@@ -53,11 +49,6 @@ public class GraphPanel extends JComponent {
         }
     }
 
-    public ControlPanel getControlPanel() {
-        return control;
-    }
-
-    public JTextArea getTextArea(){ return textArea;}
 
     public static GraphPanel getInstance(){
         if(instance == null){
@@ -66,5 +57,21 @@ public class GraphPanel extends JComponent {
         return instance;
     }
 
-    public boolean getSelecting(){return selecting;}
+    public void exportCurrentFacts() throws IOException {
+        StringBuilder facts = new StringBuilder("");
+
+        facts.append("maxRounds("+ controlPanel.getMaxRoundsSpinner().getValue() +").");
+        facts.append(System.lineSeparator());
+
+        for (int i = 0; i < edges.size(); i++){
+            facts.append(edges.get(i).toString());
+            facts.append(System.lineSeparator());
+        }
+        for (int i = 0; i < nodes.size(); i++){
+            facts.append(nodes.get(i).toString());
+            facts.append(System.lineSeparator());
+        }
+
+        FileHandler.overwriteFile(FileHandler.FACTS_PATH, facts.toString());
+    }
 }
