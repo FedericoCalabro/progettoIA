@@ -145,8 +145,10 @@ public class Node {
                 n.color = color;
             }
         }
+        //Serve una funzione che, se esiste un nodo del colore che abbiamo cambiato
+        //connesso al nodo cliccato, cambia il colore di quel nodo.
+        //Si può fare iterando tra i nodi, escluso quello cliccato, e cercando un path
     }
-
     @Override
     public String toString(){
         return "Node "+this.getId()+": color -> "+this.getColor().toString()+")";
