@@ -126,8 +126,9 @@ public class Node {
 
     @Override
     public String toString(){
-        char currentStep = GraphPanel.getInstance().getControlPanel().getCurrentMoveLabel().getText().charAt(6);
-        return "node("+this.getId()+","+Utils.getStringFromColor(color)+","+currentStep+").";
+        String labelStep = GraphPanel.getInstance().getControlPanel().getCurrentMoveLabel().getText();
+        String step = labelStep.split(": ")[1].split("/")[0];
+        return "node("+this.getId()+","+Utils.getStringFromColor(color)+","+step+").";
     }
 
 }
