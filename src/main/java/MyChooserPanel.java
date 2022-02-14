@@ -7,7 +7,7 @@ class MyChooserPanel extends AbstractColorChooserPanel {
 
     @Override
     public void buildChooser() {
-        setLayout(new GridLayout(0, 3));
+        setLayout(new GridLayout(1, 5));
         makeAddButton("Red", Color.red);
         makeAddButton("Green", Color.green);
         makeAddButton("Blue", Color.blue);

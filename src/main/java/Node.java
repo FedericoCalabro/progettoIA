@@ -109,21 +109,48 @@ public class Node {
 
     public static void updateColor(List<Node> list, Color color) {
         //int countSelected = 0;
-        Color oldColor = null;
-        Node clickedNode = null;
+        Node clickedNode = returnSelectedNode(list);
+        Color oldColor = clickedNode.getColor();
+
         for (Node n : list) {
             if (n.isSelected()) {
-                clickedNode = n;
-                oldColor = n.color;
+                //clickedNode = n;
+                //oldColor = n.color;
                 n.color = color;
             }
         }
         //Serve una funzione che, se esiste un nodo del colore che abbiamo cambiato
         //connesso al nodo cliccato, cambia il colore di quel nodo.
         //Si può fare iterando tra i nodi, escluso quello cliccato, e cercando un path
-        //boolean [] visited = new boolean[GraphPanel.getInstance().getNodes().size()+1]
+        expandColor(clickedNode, oldColor, color);
     }
-
+    private static void expandColor(Node currentNode, Color oldColor, Color newColor){
+        for(Node n: GraphPanel.getInstance().getNodes()){
+            if(currentNode.getId()!=n.getId() && isNeighbor(n,currentNode)){
+                if(n.color==oldColor){
+                    n.color=newColor;
+                    expandColor(n,oldColor, newColor);
+                }
+            }
+        }
+    }
+    private static Node returnSelectedNode(List<Node> list){
+        for (Node n : list) {
+            if (n.isSelected()) {
+                return n;
+            }
+        }
+        return null;
+    }
+    public static boolean isNeighbor(Node n1, Node n2){
+        List<Edge> edgeList = GraphPanel.getInstance().getEdges();
+        for(Edge e:edgeList){
+            //if(n1.getId()!=n2.getId())
+                if(e.getN1().getId()==n1.getId() && e.getN2().getId()==n2.getId())
+                    return true;
+        }
+        return false;
+    }
     @Override
     public String toString(){
         String labelStep = GraphPanel.getInstance().getControlPanel().getCurrentMoveLabel().getText();

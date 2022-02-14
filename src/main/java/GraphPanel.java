@@ -13,6 +13,7 @@ public class GraphPanel extends JComponent {
 
     private ControlPanel controlPanel = new ControlPanel();
     private JTextArea textArea = new JTextArea(0,20);
+    private JScrollPane scrollPane = new JScrollPane(textArea);
     private int radius = Utils.RADIUS;
     private List<Node> nodes = new ArrayList<Node>();
     private List<Node> selected = new ArrayList<Node>();
