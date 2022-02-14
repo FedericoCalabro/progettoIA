@@ -1,3 +1,12 @@
+package coloruid.gui;
+
+import coloruid.utils.FileManager;
+import coloruid.utils.Utils;
+import coloruid.actions.ConnectAction;
+import coloruid.core.Edge;
+import coloruid.core.Node;
+import coloruid.handlers.MouseHandler;
+import coloruid.handlers.MouseMotionHandler;
 import lombok.Data;
 
 import javax.swing.*;
@@ -73,6 +82,16 @@ public class GraphPanel extends JComponent {
             facts.append(System.lineSeparator());
         }
 
-        FileHandler.overwriteFile(FileHandler.FACTS_PATH, facts.toString());
+        FileManager.overwriteFile(FileManager.FACTS_PATH, facts.toString());
+    }
+
+    public void setEdges(ArrayList<Edge> edges){
+        this.edges = new ArrayList<Edge>(edges);
+        for (int i = 0; i < edges.size(); i++) {
+            Edge edge = edges.get(i);
+            if(ConnectAction.itsNotADuplicate(edge.getN2(), edge.getN1())){
+                this.edges.add(new Edge(edge.getN2(), edge.getN1()));
+            }
+        }
     }
 }

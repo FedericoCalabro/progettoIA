@@ -1,9 +1,11 @@
+package coloruid.gui;
+
 import javax.swing.*;
 import javax.swing.colorchooser.AbstractColorChooserPanel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
-class MyChooserPanel extends AbstractColorChooserPanel {
+public class MyChooserPanel extends AbstractColorChooserPanel {
 
     @Override
     public void buildChooser() {
@@ -21,7 +23,7 @@ class MyChooserPanel extends AbstractColorChooserPanel {
 
     @Override
     public String getDisplayName() {
-        return "MyChooserPanel";
+        return "coloruid.gui.MyChooserPanel";
     }
 
     @Override
@@ -36,6 +38,7 @@ class MyChooserPanel extends AbstractColorChooserPanel {
 
     private void makeAddButton(String name, Color color) {
         JButton button = new JButton(name);
+        button.setPreferredSize(new Dimension(30,30));
         button.setBackground(color);
         button.setAction(setColorAction);
         add(button);

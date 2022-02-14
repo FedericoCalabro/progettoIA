@@ -1,3 +1,9 @@
+package coloruid.actions;
+
+import coloruid.gui.GraphPanel;
+import coloruid.core.Edge;
+import coloruid.core.Node;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.util.List;
@@ -23,9 +29,9 @@ public class ConnectAction extends AbstractAction {
         }
         GraphPanel.getInstance().repaint();
     }
-    private boolean itsNotADuplicate(Node n1, Node n2){//controllo se ci sono archi duplicati
+    public static boolean itsNotADuplicate(Node n1, Node n2){//controllo se ci sono archi duplicati
         for(Edge edge : GraphPanel.getInstance().getEdges()){
-            if(edge.getN1()==n1 && edge.getN2()==n2){
+            if(edge.getN1().getId()==n1.getId() && edge.getN2().getId()==n2.getId()){
                 return false;
             }
         }

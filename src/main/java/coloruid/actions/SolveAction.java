@@ -1,3 +1,7 @@
+package coloruid.actions;
+
+import coloruid.dlv.DlvExecutor;
+import coloruid.gui.GraphPanel;
 import lombok.SneakyThrows;
 
 import javax.swing.*;
@@ -10,7 +14,7 @@ public class SolveAction extends AbstractAction {
 
     @SneakyThrows
     public void actionPerformed(ActionEvent e){
-        GraphPanel.getInstance().getTextArea().append("Solve function still not implemented!\n");
         GraphPanel.getInstance().exportCurrentFacts();
+        DlvExecutor.execute();
     }
 }

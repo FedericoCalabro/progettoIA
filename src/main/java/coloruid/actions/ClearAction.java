@@ -1,3 +1,8 @@
+package coloruid.actions;
+
+import coloruid.gui.GraphPanel;
+import coloruid.utils.Utils;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
@@ -12,5 +17,7 @@ public class ClearAction extends AbstractAction {
         GraphPanel.getInstance().getNodes().clear();
         GraphPanel.getInstance().getEdges().clear();
         GraphPanel.getInstance().repaint();
+
+        Utils.updateStepLabel(0);
     }
 }

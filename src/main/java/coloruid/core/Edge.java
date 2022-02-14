@@ -1,5 +1,6 @@
+package coloruid.core;
+
 import lombok.Data;
-import lombok.ToString;
 
 import java.awt.*;
 

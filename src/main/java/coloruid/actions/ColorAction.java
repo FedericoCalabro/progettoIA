@@ -1,3 +1,9 @@
+package coloruid.actions;
+
+import coloruid.gui.GraphPanel;
+import coloruid.gui.MyChooserPanel;
+import coloruid.core.Node;
+
 import javax.swing.*;
 import javax.swing.colorchooser.AbstractColorChooserPanel;
 import java.awt.*;

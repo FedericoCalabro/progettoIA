@@ -1,3 +1,8 @@
+package coloruid.actions;
+
+import coloruid.gui.GraphPanel;
+import coloruid.core.Node;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

@@ -1,9 +1,13 @@
+package coloruid;
+
+import coloruid.gui.GraphPanel;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class Coloruid2 {
+public class Coloruid {
     public static void main(String[] args) {
-        JFrame f = new JFrame("GraphPanel");
+        JFrame f = new JFrame("coloruid.gui.GraphPanel");
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         GraphPanel gp = GraphPanel.getInstance();
         f.add(gp.getControlPanel(), BorderLayout.NORTH);

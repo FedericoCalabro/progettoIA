@@ -1,4 +1,9 @@
-import java.awt.*;
+package coloruid.utils;
+
+import coloruid.core.Edge;
+import coloruid.core.Node;
+import coloruid.gui.GraphPanel;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -6,11 +11,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class FileHandler {
+public class FileManager {
 
     public static final String FACTS_PATH = "src/main/resources/facts";
     public static final String LEVEL_PATH_FOLDER = "src/main/resources/levels/";

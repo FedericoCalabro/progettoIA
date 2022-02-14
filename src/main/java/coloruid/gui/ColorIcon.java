@@ -1,7 +1,9 @@
+package coloruid.gui;
+
 import javax.swing.*;
 import java.awt.*;
 
-class ColorIcon implements Icon {
+public class ColorIcon implements Icon {
 
     private static final int WIDE = 20;
     private static final int HIGH = 20;

@@ -1,5 +1,8 @@
+package coloruid.core;
+
+import coloruid.gui.GraphPanel;
+import coloruid.utils.Utils;
 import lombok.Data;
-import lombok.ToString;
 
 import java.awt.*;
 import java.util.List;
@@ -108,27 +111,37 @@ public class Node {
 
 
     public static void updateColor(List<Node> list, Color color) {
-        //int countSelected = 0;
+
+        String currentStatus = Utils.checkGameStatus();
+        if(currentStatus.equals("LOSE") || currentStatus.equals("WIN")){
+            GraphPanel.getInstance().getTextArea().append("Cannot color the node, game is " + currentStatus + System.lineSeparator());
+            return;
+        }
+
         Node clickedNode = returnSelectedNode(list);
         Color oldColor = clickedNode.getColor();
 
         for (Node n : list) {
             if (n.isSelected()) {
-                //clickedNode = n;
-                //oldColor = n.color;
                 n.color = color;
             }
         }
-        //Serve una funzione che, se esiste un nodo del colore che abbiamo cambiato
-        //connesso al nodo cliccato, cambia il colore di quel nodo.
-        //Si può fare iterando tra i nodi, escluso quello cliccato, e cercando un path
         expandColor(clickedNode, oldColor, color);
+        Utils.updateStepLabel(Utils.getStepFromLabel()+1);
+
+        //check vittora / sconfitta
+        String status = Utils.checkGameStatus();
+        if(!status.equals("IN-PROGRESS")){
+            GraphPanel.getInstance().getTextArea().append(status + System.lineSeparator());
+        }else{
+            GraphPanel.getInstance().getTextArea().append("coloruid.core.Node color changed to " + Utils.getStringFromColor(color) + System.lineSeparator());
+        }
     }
     private static void expandColor(Node currentNode, Color oldColor, Color newColor){
         for(Node n: GraphPanel.getInstance().getNodes()){
             if(currentNode.getId()!=n.getId() && isNeighbor(n,currentNode)){
-                if(n.color==oldColor){
-                    n.color=newColor;
+                if(n.color.equals(oldColor)){
+                    n.setColor(newColor);
                     expandColor(n,oldColor, newColor);
                 }
             }
@@ -145,17 +158,14 @@ public class Node {
     public static boolean isNeighbor(Node n1, Node n2){
         List<Edge> edgeList = GraphPanel.getInstance().getEdges();
         for(Edge e:edgeList){
-            //if(n1.getId()!=n2.getId())
-                if(e.getN1().getId()==n1.getId() && e.getN2().getId()==n2.getId())
-                    return true;
+            if(e.getN1().getId()==n1.getId() && e.getN2().getId()==n2.getId())
+                return true;
         }
         return false;
     }
     @Override
     public String toString(){
-        String labelStep = GraphPanel.getInstance().getControlPanel().getCurrentMoveLabel().getText();
-        String step = labelStep.split(": ")[1].split("/")[0];
-        return "node("+this.getId()+","+Utils.getStringFromColor(color)+","+step+").";
+        return "node("+this.getId()+","+ Utils.getStringFromColor(color)+","+"0).";
     }
 
 }

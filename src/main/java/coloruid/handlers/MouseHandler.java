@@ -1,3 +1,8 @@
+package coloruid.handlers;
+
+import coloruid.gui.GraphPanel;
+import coloruid.core.Node;
+
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;

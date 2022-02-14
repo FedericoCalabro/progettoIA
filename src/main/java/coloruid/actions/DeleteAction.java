@@ -1,3 +1,9 @@
+package coloruid.actions;
+
+import coloruid.gui.GraphPanel;
+import coloruid.core.Edge;
+import coloruid.core.Node;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.util.ListIterator;
