@@ -39,7 +39,6 @@ public class ColorAction extends AbstractAction {
                     GraphPanel.getInstance().getControlPanel().getHueIcon().setColor(newColor);
                     GraphPanel.getInstance().getControlPanel().repaint();
                     GraphPanel.getInstance().repaint();
-//                    repaint();
                 }
             }
         };

@@ -112,13 +112,15 @@ public class Node {
 
     public static void updateColor(List<Node> list, Color color) {
 
-        String currentStatus = Utils.checkGameStatus();
-        if(currentStatus.equals("LOSE") || currentStatus.equals("WIN")){
-            GraphPanel.getInstance().getTextArea().append("Cannot color the node, game is " + currentStatus + System.lineSeparator());
-            return;
-        }
-
         Node clickedNode = returnSelectedNode(list);
+
+        if(clickedNode != null){
+            String currentStatus = Utils.checkGameStatus();
+            if(currentStatus.equals("LOSE") || currentStatus.equals("WIN")){
+                GraphPanel.getInstance().getTextArea().append("Cannot color the node, game is " + currentStatus + System.lineSeparator());
+                return;
+            }
+
         Color oldColor = clickedNode.getColor();
 
         for (Node n : list) {
@@ -134,7 +136,9 @@ public class Node {
         if(!status.equals("IN-PROGRESS")){
             GraphPanel.getInstance().getTextArea().append(status + System.lineSeparator());
         }else{
-            GraphPanel.getInstance().getTextArea().append("coloruid.core.Node color changed to " + Utils.getStringFromColor(color) + System.lineSeparator());
+            GraphPanel.getInstance().getTextArea().append("Node color changed to " + Utils.getStringFromColor(color) + System.lineSeparator());
+        }
+
         }
     }
     private static void expandColor(Node currentNode, Color oldColor, Color newColor){
