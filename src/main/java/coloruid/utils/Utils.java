@@ -92,6 +92,7 @@ public class Utils {
         }
         int currentStep = Utils.getStepFromLabel();
         int maxSteps = (int) GraphPanel.getInstance().getControlPanel().getMaxRoundsSpinner().getValue();
+        if(GraphPanel.getInstance().getControlPanel().getMode().getSelectedIndex() == 0) return "IN-PROGRESS";
         if(allSameColor) return "WIN";
         else if(!allSameColor && currentStep < maxSteps) return "IN-PROGRESS";
         else return "LOSE";

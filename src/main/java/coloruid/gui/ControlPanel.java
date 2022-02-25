@@ -24,6 +24,7 @@ public class ControlPanel extends JToolBar {
     private ColorIcon hueIcon = new ColorIcon(Color.blue);
     private JPopupMenu popup = new JPopupMenu();
     private JComboBox<String> comboBoxEncoder = new JComboBox<>();
+    private JComboBox<String> mode = new JComboBox<>();
 
     SpinnerNumberModel roundModel = new SpinnerNumberModel(4, 1, 20, 1);
     JLabel maxRoundsLabel = new JLabel("MAX ROUNDS: ");
@@ -36,6 +37,10 @@ public class ControlPanel extends JToolBar {
         this.comboBoxEncoder.addItem(DlvExecutor.ENCODING_STD);
         this.comboBoxEncoder.addItem(DlvExecutor.ENCODING_CUST);
         this.comboBoxEncoder.setSelectedIndex(0);
+
+        this.mode.addItem("Building Mode");
+        this.mode.addItem("Solving Mode");
+        this.mode.setSelectedIndex(0);
 
         this.setLayout(new FlowLayout(FlowLayout.LEFT));
         this.setBackground(Color.lightGray);
@@ -58,6 +63,7 @@ public class ControlPanel extends JToolBar {
         this.add(new JButton(load));
         this.add(currentMoveLabel);
         this.add(comboBoxEncoder);
+        this.add(mode);
 
         popup.add(new JMenuItem(newNode));
         popup.add(new JMenuItem(color));

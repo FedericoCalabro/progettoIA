@@ -15,6 +15,7 @@ public class SolveAction extends AbstractAction {
     @SneakyThrows
     public void actionPerformed(ActionEvent e){
         GraphPanel.getInstance().exportCurrentFacts();
+        GraphPanel.getInstance().getControlPanel().getMode().setSelectedIndex(1);
         DlvExecutor.execute();
     }
 }

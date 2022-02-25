@@ -128,7 +128,8 @@ public class Node {
                 n.color = color;
             }
         }
-        expandColor(clickedNode, oldColor, color);
+        if(GraphPanel.getInstance().getControlPanel().getMode().getSelectedIndex() == 1)
+            expandColor(clickedNode, oldColor, color);
         Utils.updateStepLabel(Utils.getStepFromLabel()+1);
 
         //check vittora / sconfitta
