@@ -38,6 +38,7 @@ public class FileManager {
                 String nodeValue = matcher.group(1);
                 int id = Integer.parseInt(nodeValue.split(",")[0]);
                 String color = nodeValue.split(",")[1];
+                //Node node = new Node(id, new Point(50,50), Utils.getColorFromString(color));
                 Node node = new Node(id, Utils.getRandomPoint(), Utils.getColorFromString(color));
                 nodes.add(node);
             }

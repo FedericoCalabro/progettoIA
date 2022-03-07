@@ -26,8 +26,8 @@ public class Utils {
     public static Point getPointForId(int id, int side) {
         int width = GraphPanel.getInstance().getWidth();
         int height = GraphPanel.getInstance().getHeight();
-        int x = 40 + ((id-1)%side)*40;
-        int y = 40 + ((id-1)%side)*40;
+        int x = 40 + ((id-1)%side)*80;
+        int y = 40 + ((id-1)/side)*80;
         return new Point(x, y);
     }
 

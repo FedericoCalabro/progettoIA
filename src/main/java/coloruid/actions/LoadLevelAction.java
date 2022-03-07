@@ -52,7 +52,7 @@ public class LoadLevelAction extends AbstractAction {
             }
         }
         Utils.updateStepLabel(0);
-        GraphPanel.getInstance().repaint();
         GraphPanel.getInstance().getTextArea().repaint();
+        GraphPanel.getInstance().repaint();
     }
 }
