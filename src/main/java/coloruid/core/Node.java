@@ -40,6 +40,10 @@ public class Node {
             g.drawRect(b.x, b.y, b.width, b.height);
         }
     }
+    public void setP(Point p){
+        this.p.x=p.x;
+        this.p.y=p.y;
+    }
 
     public Point getLocation() {
         return p;

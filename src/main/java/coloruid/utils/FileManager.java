@@ -29,6 +29,16 @@ public class FileManager {
     public static ArrayList<Node> getNodesFromFile(String path) throws IOException {
         List<String> lines = Files.readAllLines(Paths.get(path));
         ArrayList<Node> nodes = new ArrayList<>();
+        int nNodes=0;
+        for (int i = 0; i < lines.size(); i++) {
+            String line = lines.get(i);
+            String regex = "node\\((.*)\\)";
+            Pattern pattern = Pattern.compile(regex);
+            Matcher matcher = pattern.matcher(line);
+            if (matcher.find()) {
+                nNodes++;
+            }
+        }
         for (int i = 0; i < lines.size(); i++) {
             String line = lines.get(i);
             String regex = "node\\((.*)\\)";
@@ -38,8 +48,9 @@ public class FileManager {
                 String nodeValue = matcher.group(1);
                 int id = Integer.parseInt(nodeValue.split(",")[0]);
                 String color = nodeValue.split(",")[1];
+                Node node = new Node(id, Utils.getPointForId(id,(int)Math.sqrt(nNodes)), Utils.getColorFromString(color));
                 //Node node = new Node(id, new Point(50,50), Utils.getColorFromString(color));
-                Node node = new Node(id, Utils.getRandomPoint(), Utils.getColorFromString(color));
+                //Node node = new Node(id, Utils.getRandomPoint(), Utils.getColorFromString(color));
                 nodes.add(node);
             }
         }
