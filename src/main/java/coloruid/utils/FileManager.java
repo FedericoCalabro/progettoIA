@@ -4,6 +4,7 @@ import coloruid.core.Edge;
 import coloruid.core.Node;
 import coloruid.gui.GraphPanel;
 
+import java.awt.*;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -43,6 +44,7 @@ public class FileManager {
         }
         for (int i = 0; i < nodes.size(); i++) {
             Node node1 = nodes.get(i);
+            //node1.setP(Utils.getPointForId(node1.getId(),(int)Math.sqrt(nodes.size())));
             for (int j = 0; j < nodes.size(); j++) {
                 if(i != j){
                     Node node2 = nodes.get(j);

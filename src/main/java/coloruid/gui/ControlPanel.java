@@ -42,16 +42,22 @@ public class ControlPanel extends JToolBar {
         this.mode.addItem("Solving Mode");
         this.mode.setSelectedIndex(0);
 
-        this.setLayout(new FlowLayout(FlowLayout.LEFT));
+        this.setLayout(new GridLayout(1,3));
         this.setBackground(Color.lightGray);
 
-        this.add(defaultButton);
-        this.add(new JButton(clearAll));
-        this.add(new JButton(color));
-        this.add(new JLabel(hueIcon));
-        this.add(new JButton(solve));
-        this.add(maxRoundsLabel);
-        this.add(maxRoundsSpinner);
+        //this.add(defaultButton);
+        //this.add(new JButton(clearAll));
+        //this.add(new JButton(color));
+
+        JPanel left = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JPanel center = new JPanel();
+        JPanel right = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        left.add(new JButton(load));
+        left.add(new JButton(solve));
+        center.add(new JLabel("CURRENT COLOR:"));
+        center.add(new JLabel(hueIcon));
+        center.add(maxRoundsLabel);
+        center.add(maxRoundsSpinner);
 
         this.maxRoundsSpinner.addChangeListener(new ChangeListener() {
             @Override
@@ -60,15 +66,20 @@ public class ControlPanel extends JToolBar {
             }
         });
 
-        this.add(new JButton(load));
-        this.add(currentMoveLabel);
-        this.add(comboBoxEncoder);
-        this.add(mode);
+
+        center.add(currentMoveLabel);
+        right.add(comboBoxEncoder);
+        right.add(mode);
 
         popup.add(new JMenuItem(newNode));
         popup.add(new JMenuItem(color));
         popup.add(new JMenuItem(connect));
         popup.add(new JMenuItem(delete));
+        popup.add(new JMenuItem(clearAll));
+
+        this.add(left, FlowLayout.LEFT);
+        this.add(center, FlowLayout.CENTER);
+        this.add(right, FlowLayout.RIGHT);
     }
 
 }

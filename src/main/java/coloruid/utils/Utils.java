@@ -23,6 +23,14 @@ public class Utils {
         return new Point(x, y);
     }
 
+    public static Point getPointForId(int id, int side) {
+        int width = GraphPanel.getInstance().getWidth();
+        int height = GraphPanel.getInstance().getHeight();
+        int x = 40 + ((id-1)%side)*40;
+        int y = 40 + ((id-1)%side)*40;
+        return new Point(x, y);
+    }
+
     public static String getStringFromColor(Color color){
         int r,g,b;
         r = color.getRed();
