@@ -1,6 +1,6 @@
 # Coloruid ID
 
-A java application using IA technologies (Answer Set Programmaing).
+A java application using IA technologies (Answer Set Programming).
 
 Replica of "Coloruid" online game.
 
